@@ -1,0 +1,60 @@
+APP DU TOURNOI GP AURA 2026 — web-app installable (PWA)
+========================================================
+
+PRINCIPE
+--------
+L'app n'a PAS de contenu propre : elle affiche en direct les pages du site
+grandprix-auvergnerhonealpes.com (via l'API WordPress publique).
+→ On met à jour le site comme d'habitude, l'app suit toute seule. Aucune double saisie.
+→ Sans réseau (arena saturée), l'app affiche la dernière version consultée.
+
+ONGLETS                     PAGE DU SITE UTILISÉE
+  Accueil                   (agenda de config.js + compte à rebours + raccourcis)
+  Programme › Du jour       /programme            ← mise à jour quotidienne
+  Programme › La semaine    config.js (agenda)
+  Programme › Comprendre    texte intégré à l'app
+  Village                   /village (À CRÉER) + logos du carrousel de la page d'accueil
+  Infos                     /preparez-votre-venue, /infos-pratiques, /accessibilite (À CRÉER)
+  Partenaires 🔒            code = mot de passe de la page « Guide Partenaires 2026 »
+  Raccourcis                /joueurs, /gazette, /tableaux-de-resultats
+
+À FAIRE CÔTÉ SITE (pour remplir l'app)
+--------------------------------------
+1. Créer une page « Village »       (adresse : /village)       → stands, marques, plan.
+2. Créer une page « Accessibilité » (adresse : /accessibilite) → accès PMR, places, aides.
+   Tant qu'elles n'existent pas, l'app affiche un texte d'attente.
+   Elles peuvent rester hors du menu du site : l'app les lit quand même.
+3. Animations de la semaine : les ajouter dans config.js, rubrique « agenda »
+   (ex. { heure: "15h00", titre: "Séance de dédicaces", lieu: "Village" }).
+
+METTRE EN LIGNE
+---------------
+Option A (recommandée) : sur votre hébergement WordPress, dans un dossier /app
+  → https://www.grandprix-auvergnerhonealpes.com/app/
+  (envoyer tout le dossier par FTP ou avec l'extension « File Manager »).
+Option B (test en 1 minute, gratuit) : glisser le dossier sur https://app.netlify.com/drop
+  → une adresse de test à ouvrir sur téléphone.
+Puis diffuser le lien / un QR code (billets, écrans, réseaux, e-mail partenaires).
+
+INSTALLATION SUR TÉLÉPHONE
+--------------------------
+Android : bouton « Installer » affiché sur l'accueil de l'app.
+iPhone  : Safari › Partager › « Sur l'écran d'accueil » (l'app l'explique elle-même).
+
+APRÈS UNE MODIFICATION DES FICHIERS DE L'APP (pas du site)
+--------------------------------------------------------
+Changer la version dans sw.js (gp-aura-v2 → gp-aura-v3) pour que les téléphones
+récupèrent la nouvelle version.
+
+LIMITES À CONNAÎTRE
+-------------------
+- L'espace partenaires est une barrière de confort, pas un coffre-fort : le guide
+  (guide-partenaires.html) reste accessible à qui connaît son adresse exacte.
+  Ne rien y mettre de réellement secret.
+- Le code partenaire transite dans l'adresse de la requête vers votre site (HTTPS).
+  C'est un code partagé, pas un mot de passe personnel : acceptable, mais le changer
+  après le tournoi.
+- Notifications push : non incluses (possibles plus tard ; sur iPhone seulement si
+  l'app est installée sur l'écran d'accueil).
+- Scores en direct : lien vers la page « Tableaux de résultats » du site
+  (données ATP sous licence, non intégrables librement).

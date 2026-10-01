@@ -1,0 +1,17 @@
+{
+  "name": "Grand Prix Auvergne-Rhône-Alpes 2026",
+  "short_name": "GP AURA",
+  "description": "L'application officielle du Grand Prix Auvergne-Rhône-Alpes — ATP 250, 18-25 octobre 2026, LDLC Arena.",
+  "lang": "fr",
+  "start_url": "./#accueil",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#384050",
+  "theme_color": "#384050",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

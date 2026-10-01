@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GP AURA 2026</title>
+<meta name="description" content="L'application officielle du Grand Prix Auvergne-Rhône-Alpes — ATP 250, 18-25 octobre 2026, LDLC Arena.">
+<meta name="theme-color" content="#384050">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GP AURA">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#0096DE; --blue-deep:#0077b3; --slate:#384050; --slate-2:#2b3240; --mint:#99FFE8;
+  --bg:#f3f6f9; --card:#fff; --ink:#384050; --ink-soft:#5d6677; --line:#dfe5ec;
+  --shadow:0 6px 20px rgba(56,64,80,.08); --r:18px;
+  --safe-b:env(safe-area-inset-bottom,0px); --safe-t:env(safe-area-inset-top,0px);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:#dfe5ec}
+body{font-family:Poppins,system-ui,-apple-system,sans-serif;color:var(--ink);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--blue-deep)}
+button{font-family:inherit}
+.app{max-width:560px;margin:0 auto;min-height:100vh;min-height:100dvh;background:var(--bg);position:relative;box-shadow:0 0 40px rgba(0,0,0,.08)}
+
+/* Barre du haut */
+.top{position:sticky;top:0;z-index:20;background:var(--slate);color:#fff;padding:calc(var(--safe-t) + 10px) 16px 10px;display:flex;align-items:center;gap:12px;min-height:58px}
+.top img{height:30px;width:auto}
+.top h1{font-size:16px;font-weight:600;margin:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.back{background:rgba(255,255,255,.1);border:0;color:#fff;width:36px;height:36px;border-radius:10px;display:none;align-items:center;justify-content:center;cursor:pointer}
+.back.on{display:flex}
+.back svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+main{padding:16px 16px calc(96px + var(--safe-b))}
+.view{animation:in .2s ease}
+@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* Barre d'onglets */
+.tabs{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:560px;z-index:30;background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding:6px 4px calc(6px + var(--safe-b))}
+.tabs a{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 2px;text-decoration:none;color:#8a93a3;font-size:11px;font-weight:500;border-radius:12px}
+.tabs a svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.tabs a.on{color:var(--blue-deep);font-weight:600}
+.tabs a.on svg{stroke-width:2.3}
+
+/* Blocs */
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:18px;margin-bottom:14px}
+h2{font-size:21px;line-height:1.2;margin:4px 0 12px;font-weight:700}
+h3{font-size:17px;margin:0 0 6px;font-weight:600}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-deep)}
+.muted{color:var(--ink-soft);font-size:13px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;border-radius:999px;background:var(--blue);color:#fff!important;font-weight:600;font-size:14px;text-decoration:none;border:0;cursor:pointer}
+.btn.mint{background:var(--mint);color:var(--slate)!important}
+.btn.ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink)!important}
+.btn.block{display:flex;width:100%}
+
+/* Accueil */
+.hero{background:linear-gradient(135deg,var(--slate) 0%,#2c4a66 60%,var(--blue) 140%);color:#fff;border-radius:22px;padding:22px 20px;position:relative;overflow:hidden;margin-bottom:14px}
+.hero::before{content:"";position:absolute;inset:0;background:url(arena.jpg) center/cover;opacity:.2;mix-blend-mode:luminosity}
+.hero .stripes{position:absolute;right:-110px;top:-30px;width:340px;opacity:.45;pointer-events:none}
+.hero > *{position:relative}
+.hero .logo{width:210px;margin-bottom:16px}
+.hero .when{font-size:13px;opacity:.9;margin-bottom:14px}
+.cd{display:flex;gap:8px}
+.cd div{flex:1;background:rgba(0,0,0,.2);border-radius:14px;padding:8px 4px;text-align:center}
+.cd b{display:block;font-size:24px;line-height:1.1}
+.cd small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+.today .tag{display:inline-block;background:var(--mint);color:var(--slate);font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;margin-bottom:8px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.tile{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;text-decoration:none;color:var(--ink);display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow);min-height:96px}
+.tile .i{width:38px;height:38px;border-radius:11px;background:rgba(0,150,222,.1);display:flex;align-items:center;justify-content:center}
+.tile .i svg{width:21px;height:21px;stroke:var(--blue-deep);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.tile b{font-size:14px;font-weight:600;line-height:1.25}
+.tile small{font-size:12px;color:var(--ink-soft);line-height:1.3}
+.install{display:none;align-items:center;gap:12px}
+.install.on{display:flex}
+.install img{width:48px;height:48px;border-radius:12px}
+
+/* Segments */
+.seg{display:flex;background:#e6ebf1;border-radius:14px;padding:4px;margin-bottom:14px;gap:4px}
+.seg button{flex:1;border:0;background:none;padding:9px 6px;border-radius:10px;font-size:13px;font-weight:600;color:var(--ink-soft);cursor:pointer}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(56,64,80,.1)}
+
+/* Agenda */
+.day{display:flex;gap:14px;align-items:flex-start}
+.day .d{flex:0 0 58px;text-align:center;background:var(--slate);color:#fff;border-radius:14px;padding:8px 4px}
+.day .d small{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;opacity:.8}
+.day .d b{font-size:24px;line-height:1.1}
+.day.now .d{background:var(--blue)}
+.day .c{flex:1;min-width:0}
+.day .c .t{font-weight:600}
+.anim{margin-top:8px;padding:8px 10px;border-radius:10px;background:rgba(0,150,222,.08);font-size:13px}
+.anim b{color:var(--blue-deep)}
+
+/* Contenu issu du site */
+.wp{overflow-wrap:anywhere}
+.wp h1,.wp h2{font-size:20px;margin:18px 0 8px}
+.wp h3{font-size:17px;color:var(--blue-deep);margin:16px 0 6px}
+.wp h4,.wp h5,.wp h6{font-size:14px;margin:12px 0 4px;letter-spacing:.04em}
+.wp p{margin:0 0 10px}
+.wp .row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:10px 0}
+.wp .col{min-width:0}
+.wp .row.multi .col{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px}
+.wp .row.multi .col > img:first-child{width:64px;height:64px;object-fit:contain;margin:0 auto 6px}
+.wp img{border-radius:12px;margin:6px 0}
+.wp .logos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.wp .logos a,.logos a{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;display:flex;align-items:center;justify-content:center;aspect-ratio:1}
+.logos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.logos img{max-height:70px;width:auto;object-fit:contain;margin:0}
+.wp .btn{margin:4px 0}
+.wp ul{padding-left:20px}
+.upd{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-soft);margin:-4px 0 12px}
+.upd i{width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block}
+.upd.off i{background:#f0a020}
+.skel{height:14px;border-radius:7px;background:linear-gradient(90deg,#e6ebf1,#f3f6f9,#e6ebf1);background-size:200% 100%;animation:sk 1.2s infinite;margin:10px 0}
+@keyframes sk{to{background-position:-200% 0}}
+
+/* Accordéon Infos */
+details.acc{background:#fff;border:1px solid var(--line);border-radius:16px;margin-bottom:10px;box-shadow:var(--shadow);overflow:hidden}
+details.acc summary{list-style:none;display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;font-weight:600}
+details.acc summary::-webkit-details-marker{display:none}
+details.acc summary .i{width:36px;height:36px;border-radius:10px;background:rgba(0,150,222,.1);display:flex;align-items:center;justify-content:center;flex:0 0 36px}
+details.acc summary .i svg{width:20px;height:20px;stroke:var(--blue-deep);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+details.acc summary::after{content:"";margin-left:auto;width:9px;height:9px;border-right:2px solid var(--ink-soft);border-bottom:2px solid var(--ink-soft);transform:rotate(45deg);transition:.2s}
+details.acc[open] summary::after{transform:rotate(-135deg)}
+details.acc .in{padding:0 16px 16px}
+
+/* Partenaires */
+.lock{text-align:center;padding:28px 20px}
+.lock .pad{width:64px;height:64px;border-radius:18px;background:var(--slate);display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.lock .pad svg{width:30px;height:30px;stroke:var(--mint);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.lock input{width:100%;font:500 16px Poppins,sans-serif;padding:13px 16px;border:1.5px solid var(--line);border-radius:14px;margin:14px 0 10px;text-align:center;letter-spacing:.08em}
+.lock input:focus{outline:none;border-color:var(--blue)}
+.err{color:#c0392b;font-size:13px;min-height:20px}
+.guide{position:fixed;inset:0;z-index:40;background:#fff;display:flex;flex-direction:column;max-width:560px;margin:0 auto}
+.guide header{background:var(--slate);color:#fff;display:flex;align-items:center;gap:10px;padding:calc(var(--safe-t) + 10px) 12px 10px}
+.guide header b{flex:1;font-size:15px}
+.guide iframe{flex:1;border:0;width:100%}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top">
+    <button class="back" id="back" aria-label="Retour"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <img src="logo_white.png" alt="Grand Prix Auvergne-Rhône-Alpes — ATP 250" id="toplogo">
+    <h1 id="title"></h1>
+  </div>
+  <main id="main" aria-live="polite"></main>
+  <nav class="tabs" aria-label="Navigation principale">
+    <a href="#accueil" data-tab="accueil"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>Accueil</a>
+    <a href="#programme" data-tab="programme"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Programme</a>
+    <a href="#village" data-tab="village"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V11l7-5 7 5v10"/><path d="M9 21v-5h6v5"/></svg>Village</a>
+    <a href="#infos" data-tab="infos"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>Infos</a>
+    <a href="#partenaires" data-tab="partenaires"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Partenaires</a>
+  </nav>
+</div>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
